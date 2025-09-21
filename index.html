@@ -508,7 +508,7 @@
         }
 
         .stat {
-            text-align: left;
+            text-align: center;
         }
 
         .stat-number {
@@ -1547,14 +1547,15 @@
 
             .stats {
                 gap: 30px;
+                justify-content: center;
             }
 
             .stat-number {
-                font-size: 28px;
+                font-size: 20px;
             }
 
             .stat-label {
-                font-size: 12px;
+                font-size: 9px;
             }
         }
 
@@ -1591,8 +1592,18 @@
             }
 
             .stats {
-                flex-direction: column;
-                gap: 20px;
+                flex-direction: row;
+                gap: 10px;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .stat-number {
+                font-size: 18px;
+            }
+
+            .stat-label {
+                font-size: 8px;
             }
         }
     </style>
