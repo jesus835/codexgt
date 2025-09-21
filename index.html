@@ -840,11 +840,31 @@
 
         /* Portfolio Mobile Responsive */
         @media (max-width: 768px) {
+            .portfolio-overlay {
+                display: none; /* Oculto por defecto */
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                background-color: rgba(0, 0, 0, 0.9); /* Fondo semi-transparente para móvil */
+            }
+
+            .portfolio-overlay.active {
+                display: flex !important; /* Solo mostrar cuando esté activo */
+            }
+
             .portfolio-modal {
                 max-width: 95%;
                 max-height: 95vh;
-                margin: 20px;
                 border-radius: 12px;
+                background-color: #0a0a0a;
+                border: 1px solid #333333;
+                overflow-y: auto;
+                scrollbar-width: none; /* Firefox */
+                -ms-overflow-style: none; /* IE and Edge */
+            }
+
+            .portfolio-modal::-webkit-scrollbar {
+                display: none; /* Chrome, Safari, Opera */
             }
 
             .portfolio-content {
@@ -897,17 +917,8 @@
                 height: 35px;
             }
 
-            .portfolio-info h3 {
-                font-size: 18px;
-            }
-
-            .portfolio-info p {
-                font-size: 14px;
-                margin-bottom: 15px;
-            }
-
             .portfolio-footer {
-                display: block;
+                display: block !important;
                 text-align: center;
                 margin-top: 30px;
                 padding-top: 20px;
@@ -954,10 +965,13 @@
         }
 
         @media (max-width: 480px) {
+            .portfolio-overlay {
+                padding: 15px; /* Menos padding para móviles pequeños */
+            }
+
             .portfolio-modal {
                 max-width: 98%;
                 max-height: 98vh;
-                margin: 10px;
                 border-radius: 8px;
             }
 
@@ -1008,6 +1022,19 @@
                 font-size: 20px;
                 width: 30px;
                 height: 30px;
+            }
+
+            .portfolio-footer {
+                display: block !important;
+                text-align: center;
+                margin-top: 25px;
+                padding-top: 15px;
+                border-top: 1px solid #333333;
+            }
+
+            .btn-volver {
+                padding: 10px 25px;
+                font-size: 13px;
             }
 
             /* Botón de cerrar adicional en el header para móvil pequeño */
@@ -1557,17 +1584,17 @@
             </div>
         </nav>
         <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobileMenu">
-            <ul class="mobile-nav-links">
-                <li><a href="#top" onclick="closeMobileMenu(); closePortfolio(); closeBlog();">Inicio</a></li>
-                <li><a href="#service" onclick="closeMobileMenu(); closePortfolio(); closeBlog();">Servicios</a></li>
-                <li><a href="#about" onclick="closeMobileMenu(); closePortfolio(); closeBlog();">Nosotros</a></li>
-                <li><a href="#project" onclick="closeMobileMenu(); openPortfolio(); closeBlog();">Proyectos</a></li>
-                <li><a href="#blog" onclick="closeMobileMenu(); showBlog();">Blog</a></li>
-                <li><a href="#contact" onclick="closeMobileMenu(); closePortfolio(); closeBlog();">Contacto</a></li>
-            </ul>
-            <a href="#" class="sign-in-btn" onclick="closeMobileMenu()">Cotiza Tu Página Hoy</a>
-        </div>
+            <div class="mobile-menu" id="mobileMenu">
+                <ul class="mobile-nav-links">
+                    <li><a href="#top" onclick="closeMobileMenu(); closePortfolio(); closeBlog();">Inicio</a></li>
+                    <li><a href="#service" onclick="closeMobileMenu(); closePortfolio(); closeBlog();">Servicios</a></li>
+                    <li><a href="#about" onclick="closeMobileMenu(); closePortfolio(); closeBlog();">Nosotros</a></li>
+                    <li><a href="#project" onclick="closeMobileMenu(); openPortfolio(); closeBlog();">Proyectos</a></li>
+                    <li><a href="#blog" onclick="closeMobileMenu(); closePortfolio(); showBlog();">Blog</a></li>
+                    <li><a href="#contact" onclick="closeMobileMenu(); closePortfolio(); closeBlog();">Contacto</a></li>
+                </ul>
+                <a href="#" class="sign-in-btn" onclick="closeMobileMenu(); closePortfolio(); closeBlog();">Cotiza Tu Página Hoy</a>
+            </div>
     </header>
 
     <!-- Main Content -->
