@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codex - Soluciones Digitales Que Hacen Crecer Tu Negocio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 99999;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #c3ff00 0%, #8bc34a 100%);
+            border-radius: 8px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #000;
+            padding: 4px;
+        }
+
+        .logo-icon img {
+            filter: brightness(0);
+            transform: translateX(2px);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #c3ff00;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .sign-in-btn {
+            background: linear-gradient(135deg, #c3ff00 0%, #8bc34a 100%);
+            color: #000000;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .sign-in-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 80px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 0 0;
+            position: relative;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text {
+            z-index: 2;
+        }
+
+        /* Hero spacer - oculto por defecto, solo visible en móviles */
+        .hero-spacer {
+            display: none;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: rgba(195, 255, 0, 0.1);
+            border: 2px solid #c3ff00;
+            border-radius: 8px;
+            color: #c3ff00;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .hero-tag::before,
+        .hero-tag::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #c3ff00;
+            border-radius: 2px;
+        }
+
+        .hero-tag::before {
+            top: -4px;
+            left: -4px;
+        }
+
+        .hero-tag::after {
+            bottom: -4px;
+            right: -4px;
+        }
+
+        .hero h1 {
+            font-size: 54px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            color: #ffffff;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #b0b0b0;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+            color: #000000;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffffff;
+            padding: 16px 32px;
+            border: 2px solid #333333;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: #c3ff00;
+            color: #c3ff00;
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(20%);
+        }
+
+        .hero-image-bg {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #c3ff00 0%, #8bc34a 100%);
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .hero-woman {
+            position: absolute;
+            bottom: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: url('images/programador.png') center/contain;
+            z-index: 2;
+        }
+
+        .hero-tags {
+            position: absolute;
+        }
+
+        .tag-ux {
+            top: 60px;
+            right: 80px;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .tag-product {
+            bottom: 120px;
+            left: 40px;
+            background-color: #c3ff00;
+            color: #000000;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Services Banner */
+        .services-banner {
+            background: linear-gradient(135deg, #c3ff00 0%, #8bc34a 100%);
+            padding: 5px 0;
+            margin: 200px 0 0 0;
+            position: relative;
+            z-index: 9999;
+        }
+
+        .services-slider {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            color: #000000;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-icon {
+            width: 24px;
+            height: 24px;
+            background-color: #000000;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c3ff00;
+            font-size: 12px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 240px 0;
+        }
+
+        .services-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .services-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .services-header .section-tag {
+            color: #c3ff00;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .view-all-btn {
+            color: #c3ff00;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid #c3ff00;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: #1a1a1a;
+            padding: 40px 30px;
+            border-radius: 16px;
+            border: 1px solid #333333;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #c3ff00 0%, #8bc34a 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: #000000;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #b0b0b0;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: #c3ff00;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 240px 0 400px 0;
+            background-color: #0f0f0f;
+            overflow: visible;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: visible;
+        }
+
+        .about-image-bg {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, #c3ff00 0%, #8bc34a 100%);
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .about-woman {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-45%, -50%);
+            width: 250px;
+            height: 250px;
+            background: url('images/logo.png') center/contain;
+            border-radius: 50%;
+            z-index: 2;
+            filter: brightness(0);
+        }
+
+        .about-text {
+            z-index: 2;
+        }
+
+        .about-text .section-tag {
+            color: #c3ff00;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .about-text h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .about-text h2 .highlight {
+            color: #c3ff00;
+        }
+
+        .about-text p {
+            color: #b0b0b0;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .stats {
+            display: flex;
+            gap: 60px;
+        }
+
+        .stat {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: #c3ff00;
+            display: block;
+        }
+
+        .stat-label {
+            color: #b0b0b0;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Portfolio Overlay - Pantalla completa para desktop */
+        .portfolio-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0a0a0a; /* Fondo sólido para pantalla completa */
+            z-index: 10000;
+            display: none;
+            overflow-y: auto;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+
+        .portfolio-overlay::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .portfolio-overlay.active {
+            display: block; /* Pantalla completa */
+        }
+
+        .portfolio-modal {
+            width: 100%;
+            min-height: 100vh; /* Altura completa */
+            position: relative;
+            /* Sin max-width, max-height, margin, border-radius para pantalla completa */
+        }
+
+        .close-portfolio {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 10001;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-portfolio:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .portfolio-content {
+            padding: 100px 40px 60px; /* Padding aumentado para pantalla completa */
+            max-width: 1200px; /* Contenido centrado */
+            margin: 0 auto;
+        }
+
+        .portfolio-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .portfolio-header .section-tag {
+            color: #c3ff00;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .portfolio-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-header p {
+            color: #b0b0b0;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333333;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .portfolio-image {
+            height: 200px;
+            background-color: #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .portfolio-placeholder {
+            color: #666666;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .portfolio-info {
+            padding: 25px;
+        }
+
+        .portfolio-info h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-info p {
+            color: #b0b0b0;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-tags .tag {
+            background-color: rgba(195, 255, 0, 0.1);
+            color: #c3ff00;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .portfolio-link {
+            display: inline-block;
+            color: #c3ff00;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .portfolio-link:hover {
+            color: #ffffff;
+        }
+
+        /* Portfolio Footer - Hidden by default, only visible on mobile */
+        .portfolio-footer {
+            display: none;
+        }
+
+        .btn-volver {
+            background: linear-gradient(135deg, #c3ff00 0%, #8bc34a 100%);
+            color: #000000;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-volver:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(195, 255, 0, 0.3);
+        }
+
+        /* Blog Overlay - Pantalla completa */
+        .blog-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0a0a0a;
+            z-index: 10000;
+            display: none;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .blog-overlay::-webkit-scrollbar {
+            display: none;
+        }
+
+        .blog-overlay.active {
+            display: block;
+        }
+
+        .blog-modal {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .close-blog {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 10001;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-blog:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .blog-content {
+            padding: 100px 40px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .blog-header .section-tag {
+            color: #c3ff00;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .blog-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .blog-header p {
+            color: #b0b0b0;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-item {
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333333;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-image {
+            height: 200px;
+            background-color: #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .blog-placeholder {
+            color: #666666;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .blog-info {
+            padding: 25px;
+        }
+
+        .blog-info h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .blog-info p {
+            color: #b0b0b0;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .blog-date {
+            color: #c3ff00;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .blog-category {
+            background-color: rgba(195, 255, 0, 0.1);
+            color: #c3ff00;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Blog footer - oculto por defecto, solo visible en móviles */
+        .blog-footer {
+            display: none;
+        }
+
+        /* Portfolio Mobile Responsive */
+        @media (max-width: 768px) {
+            .portfolio-modal {
+                max-width: 95%;
+                max-height: 95vh;
+                margin: 20px;
+                border-radius: 12px;
+            }
+
+            .portfolio-content {
+                padding: 40px 20px 20px;
+            }
+
+            .portfolio-header {
+                margin-bottom: 30px;
+            }
+
+            .portfolio-header h2 {
+                font-size: 28px;
+            }
+
+            .portfolio-header p {
+                font-size: 16px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .portfolio-item {
+                margin-bottom: 0;
+            }
+
+            .portfolio-image {
+                height: 180px;
+            }
+
+            .portfolio-info {
+                padding: 20px;
+            }
+
+            .portfolio-info h3 {
+                font-size: 18px;
+            }
+
+            .portfolio-info p {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+
+            .close-portfolio {
+                top: 15px;
+                right: 15px;
+                font-size: 24px;
+                width: 35px;
+                height: 35px;
+            }
+
+            .portfolio-info h3 {
+                font-size: 18px;
+            }
+
+            .portfolio-info p {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+
+            .portfolio-footer {
+                display: block;
+                text-align: center;
+                margin-top: 30px;
+                padding-top: 20px;
+                border-top: 1px solid #333333;
+            }
+
+            .btn-volver {
+                padding: 12px 30px;
+                font-size: 14px;
+            }
+
+            .close-portfolio {
+                top: 10px;
+                right: 10px;
+                font-size: 28px;
+                width: 45px;
+                height: 45px;
+                background: rgba(0, 0, 0, 0.9);
+                border: 3px solid #ffffff;
+                font-weight: bold;
+            }
+
+            /* Botón de cerrar adicional en el header para móvil */
+            .portfolio-header::after {
+                content: "✕";
+                position: absolute;
+                top: -40px;
+                right: 0;
+                background: rgba(0, 0, 0, 0.9);
+                color: #ffffff;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 20px;
+                font-weight: bold;
+                cursor: pointer;
+                border: 2px solid #ffffff;
+                z-index: 10002;
+                pointer-events: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .portfolio-modal {
+                max-width: 98%;
+                max-height: 98vh;
+                margin: 10px;
+                border-radius: 8px;
+            }
+
+            .portfolio-content {
+                padding: 30px 15px 15px;
+            }
+
+            .portfolio-header {
+                margin-bottom: 25px;
+            }
+
+            .portfolio-header h2 {
+                font-size: 24px;
+            }
+
+            .portfolio-header p {
+                font-size: 14px;
+            }
+
+            .portfolio-grid {
+                gap: 15px;
+            }
+
+            .portfolio-image {
+                height: 160px;
+            }
+
+            .portfolio-info {
+                padding: 15px;
+            }
+
+            .portfolio-info h3 {
+                font-size: 16px;
+            }
+
+            .portfolio-info p {
+                font-size: 13px;
+            }
+
+            .portfolio-tags .tag {
+                font-size: 11px;
+                padding: 4px 8px;
+            }
+
+            .close-portfolio {
+                top: 10px;
+                right: 10px;
+                font-size: 20px;
+                width: 30px;
+                height: 30px;
+            }
+
+            /* Botón de cerrar adicional en el header para móvil pequeño */
+            .portfolio-header::after {
+                content: "✕";
+                position: absolute;
+                top: -35px;
+                right: 0;
+                background: rgba(0, 0, 0, 0.9);
+                color: #ffffff;
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 18px;
+                font-weight: bold;
+                cursor: pointer;
+                border: 2px solid #ffffff;
+                z-index: 10002;
+                pointer-events: auto;
+            }
+        }
+
+        /* Blog Mobile Responsive */
+        @media (max-width: 768px) {
+            .blog-content {
+                padding: 80px 20px 40px;
+            }
+
+            .blog-header {
+                margin-bottom: 30px;
+                margin-top: 5%; /* Bajar el header 5% y empujar todo hacia abajo */
+            }
+
+            .blog-header h2 {
+                font-size: 28px;
+            }
+
+            .blog-header p {
+                font-size: 16px;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .blog-image {
+                height: 180px;
+            }
+
+            .blog-info {
+                padding: 20px;
+            }
+
+            .blog-info h3 {
+                font-size: 18px;
+            }
+
+            .blog-info p {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+
+            .blog-footer {
+                display: block;
+                text-align: center;
+                margin-top: 30px;
+                padding-top: 20px;
+                border-top: 1px solid #333333;
+            }
+
+            .close-blog {
+                top: 10px;
+                right: 10px;
+                font-size: 24px;
+                width: 40px;
+                height: 40px;
+                background: rgba(0, 0, 0, 0.9);
+                border: 3px solid #ffffff;
+                font-weight: bold;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blog-content {
+                padding: 70px 15px 30px;
+            }
+
+            .blog-header {
+                margin-bottom: 25px;
+                margin-top: 5%; /* Bajar el header 5% y empujar todo hacia abajo */
+            }
+
+            .blog-header h2 {
+                font-size: 24px;
+            }
+
+            .blog-header p {
+                font-size: 14px;
+            }
+
+            .blog-grid {
+                gap: 15px;
+            }
+
+            .blog-image {
+                height: 160px;
+            }
+
+            .blog-info {
+                padding: 15px;
+            }
+
+            .blog-info h3 {
+                font-size: 16px;
+            }
+
+            .blog-info p {
+                font-size: 13px;
+            }
+
+            .blog-footer {
+                margin-top: 25px;
+                padding-top: 15px;
+            }
+
+            .close-blog {
+                top: 5px;
+                right: 5px;
+                font-size: 20px;
+                width: 35px;
+                height: 35px;
+                background: rgba(0, 0, 0, 0.9);
+                border: 3px solid #ffffff;
+                font-weight: bold;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background-color: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .mobile-nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 18px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 30px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero-image-bg {
+                width: 350px;
+                height: 350px;
+            }
+
+            .hero-woman {
+                width: 600px; /* 100% más grande (300px * 2) */
+                height: 700px; /* 100% más grande (350px * 2) */
+                bottom: -140px; /* Subir 10% más (de -170px a -140px) */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            /* Header Mobile */
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .sign-in-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            /* Hero Mobile */
+            .hero {
+                padding: 40px 0;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            /* Hero spacer visible en móviles */
+            .hero-spacer {
+                display: block;
+                height: 100px; /* Espacio que empuja todo hacia abajo */
+            }
+
+            /* Hero text con margin-top solo en móviles */
+            .hero-text {
+                margin-top: 10%; /* Solo en móviles */
+            }
+
+            .hero h1 {
+                font-size: 36px;
+                line-height: 1.2;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .hero-image-bg {
+                width: 280px;
+                height: 280px;
+            }
+
+            .hero-woman {
+                width: 480px; /* 100% más grande (240px * 2) */
+                height: 560px; /* 100% más grande (280px * 2) */
+                bottom: -120px; /* Subir 10% más (de -150px a -120px) */
+            }
+
+            .tag-ux {
+                top: 20px;
+                right: 20px;
+                font-size: 10px;
+                padding: 6px 12px;
+            }
+
+            .tag-product {
+                bottom: 60px;
+                left: 20px;
+                font-size: 10px;
+                padding: 6px 12px;
+            }
+
+            /* Services Banner Mobile */
+            .services-banner {
+                padding: 15px 0;
+                margin: 40px 0;
+            }
+
+            .services-slider {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .service-item {
+                flex: 0 0 auto;
+                min-width: 120px;
+            }
+
+            .service-icon {
+                width: 20px;
+                height: 20px;
+                font-size: 10px;
+            }
+
+            /* Services Section Mobile */
+            .services {
+                padding: 60px 0;
+            }
+
+            .services-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                margin-bottom: 40px;
+            }
+
+            .services-header h2 {
+                font-size: 28px;
+                line-height: 1.2;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .service-card {
+                padding: 30px 20px;
+            }
+
+            .service-card h3 {
+                font-size: 20px;
+            }
+
+            /* About Section Mobile */
+            .about {
+                padding: 60px 0;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .about-image {
+                order: 1;
+            }
+
+            .about-text {
+                order: 2;
+            }
+
+            .about-text h2 {
+                font-size: 28px;
+                line-height: 1.2;
+            }
+
+            .about-image-bg {
+                width: 280px;
+                height: 280px;
+            }
+
+            .about-woman {
+                width: 240px;
+                height: 280px;
+            }
+
+            .stats {
+                justify-content: center;
+                gap: 40px;
+                flex-wrap: wrap;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            /* Header Extra Small */
+            .logo {
+                font-size: 18px;
+            }
+
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+            }
+
+            .sign-in-btn {
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+
+            /* Hero Extra Small */
+            .hero {
+                padding: 30px 0;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .hero-image-bg {
+                width: 240px;
+                height: 240px;
+            }
+
+            .hero-woman {
+                width: 400px; /* 100% más grande (200px * 2) */
+                height: 480px; /* 100% más grande (240px * 2) */
+                bottom: -110px; /* Subir 10% más (de -140px a -110px) */
+            }
+
+            /* Services Banner Extra Small */
+            .services-slider {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .service-item {
+                min-width: auto;
+                font-size: 16px;
+            }
+
+            /* Services Extra Small */
+            .services-header h2 {
+                font-size: 24px;
+            }
+
+            .service-card {
+                padding: 25px 15px;
+            }
+
+            /* About Extra Small */
+            .about-text h2 {
+                font-size: 24px;
+            }
+
+            .about-image-bg {
+                width: 240px;
+                height: 240px;
+            }
+
+            .about-woman {
+                width: 200px;
+                height: 240px;
+            }
+
+            .stats {
+                gap: 30px;
+            }
+
+            .stat-number {
+                font-size: 28px;
+            }
+
+            .stat-label {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            /* Ultra Small Devices */
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .hero-image-bg {
+                width: 200px;
+                height: 200px;
+            }
+
+            .hero-woman {
+                width: 340px; /* 100% más grande (170px * 2) */
+                height: 400px; /* 100% más grande (200px * 2) */
+                bottom: -100px; /* Subir 10% más (de -130px a -100px) */
+            }
+
+            .about-image-bg {
+                width: 200px;
+                height: 200px;
+            }
+
+            .about-woman {
+                width: 170px;
+                height: 200px;
+            }
+
+            .services-header h2,
+            .about-text h2 {
+                font-size: 22px;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">
+                <div class="logo-icon"><img src="images/logo.png" alt="Codex Logo" style="width: 100%; height: 100%; object-fit: contain;"></div>
+                Codex
+            </div>
+            <ul class="nav-links">
+                <li><a href="#top" onclick="closePortfolio(); closeBlog();">Inicio</a></li>
+                <li><a href="#service" onclick="closePortfolio(); closeBlog();">Servicios</a></li>
+                <li><a href="#about" onclick="closePortfolio(); closeBlog();">Nosotros</a></li>
+                <li><a href="#project" onclick="openPortfolio(); closeBlog();">Proyectos</a></li>
+                <li><a href="#blog" onclick="showBlog()">Blog</a></li>
+                <li><a href="#contact" onclick="closePortfolio(); closeBlog();">Contacto</a></li>
+            </ul>
+            <div class="header-right">
+                <a href="#" class="sign-in-btn">Cotiza Tu Página Hoy</a>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul class="mobile-nav-links">
+                <li><a href="#top" onclick="closeMobileMenu(); closePortfolio(); closeBlog();">Inicio</a></li>
+                <li><a href="#service" onclick="closeMobileMenu(); closePortfolio(); closeBlog();">Servicios</a></li>
+                <li><a href="#about" onclick="closeMobileMenu(); closePortfolio(); closeBlog();">Nosotros</a></li>
+                <li><a href="#project" onclick="closeMobileMenu(); openPortfolio(); closeBlog();">Proyectos</a></li>
+                <li><a href="#blog" onclick="closeMobileMenu(); showBlog();">Blog</a></li>
+                <li><a href="#contact" onclick="closeMobileMenu(); closePortfolio(); closeBlog();">Contacto</a></li>
+            </ul>
+            <a href="#" class="sign-in-btn" onclick="closeMobileMenu()">Cotiza Tu Página Hoy</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="hero-tag">¡Hola!</div>
+                        <h1>Soluciones Digitales Que Hacen Crecer Tu Negocio</h1>
+                        <p>En Codex, creamos sitios web, aplicaciones y sistemas digitales que realmente funcionan. No solo hacemos cosas bonitas, sino que te ayudamos a conseguir más clientes, vender más y hacer crecer tu negocio de verdad. Trabajamos contigo para entender exactamente lo que necesitas y crear la solución perfecta para tu empresa.</p>
+                        <div class="hero-buttons">
+                            <a href="#" class="btn-primary" onclick="openPortfolio()">
+                                Ver Nuestro Portafolio
+                                <span>▶</span>
+                            </a>
+                            <a href="#" class="btn-secondary">Clic y Crea tu Página Hoy</a>
+                        </div>
+                        <div class="hero-spacer"></div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="hero-image-bg">
+                            <div class="hero-woman" style="background: url('images/programador.png') center/cover;"></div>
+                        </div>
+                        <div class="hero-tags">
+                            <div class="tag-ux">Diseño UI/UX</div>
+                            <div class="tag-product">Diseño de Producto</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Banner -->
+        <section class="services-banner">
+            <div class="container">
+                <div class="services-slider">
+                    <div class="service-item">
+                        <div class="service-icon">↓</div>
+                        <span>Publicidad</span>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">↓</div>
+                        <span>Wireframes</span>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">↓</div>
+                        <span>Diseño Web</span>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">↓</div>
+                        <span>Dashboard</span>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">↓</div>
+                        <span>Diseño de Logo</span>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">↓</div>
+                        <span>Diseño de Apps</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="service">
+            <div class="container">
+                <div class="services-header">
+                    <div>
+                        <span class="section-tag">Servicios</span>
+                        <h2>Entregando Valor a Través de Nuestros Servicios</h2>
+                    </div>
+                    <a href="#" class="view-all-btn">Ver Todos los Servicios</a>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-card-icon">UI</div>
+                        <h3>Diseño Web</h3>
+                        <p>Diseñamos interfaces limpias y amigables que mejoran la experiencia del usuario y generan resultados. Soluciones digitales efectivas.</p>
+                        <a href="#" class="read-more">Empieza Hoy</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-card-icon">📱</div>
+                        <h3>Diseño de Apps</h3>
+                        <p>Diseñamos aplicaciones móviles elegantes y amigables que ofrecen experiencias fluidas y mantienen a los usuarios comprometidos.</p>
+                        <a href="#" class="read-more">Empieza Hoy</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-card-icon">UI</div>
+                        <h3>Diseño UI/UX</h3>
+                        <p>Creamos sitios web responsivos y modernos que se ven geniales y funcionan perfectamente en todos los dispositivos.</p>
+                        <a href="#" class="read-more">Empieza Hoy</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-image">
+                        <div class="about-image-bg">
+                            <div class="about-woman" style="background: url('images/logo.png') center/cover;"></div>
+                        </div>
+                    </div>
+                    <div class="about-text">
+                        <span class="section-tag">Nosotros</span>
+                        <h2>La Historia Detrás de <span class="highlight">Codex</span></h2>
+                        <p>Codex comenzó con una misión simple—convertir ideas y sueños en Realidad. Hoy, ayudamos a las empresas a crecer a través del diseño inteligente, la innovación y un enfoque centrado en el usuario al Precio Justo.</p>
+                        <div class="stats">
+                            <div class="stat">
+                                <span class="stat-number">1K+</span>
+                                <span class="stat-label">Proyectos Completados</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">10+</span>
+                                <span class="stat-label">Industrias Cubiertas</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">8+</span>
+                                <span class="stat-label">Años de Experiencia</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Overlay -->
+        <div class="portfolio-overlay" id="portfolioOverlay">
+            <div class="portfolio-modal">
+                <button class="close-portfolio" onclick="closePortfolio()">×</button>
+                <div class="portfolio-content">
+                    <div class="portfolio-header">
+                        <span class="section-tag">Portafolio</span>
+                            <h2>Proyectos Destacados</h2>
+                        <p>Descubre algunos de los proyectos que podemos desarrollar para nuestros clientes, creando soluciones digitales que realmente funcionan.</p>
+                    </div>
+                    <div class="portfolio-grid">
+                        <div class="portfolio-item">
+                            <div class="portfolio-image" style="background: #2a2a2a; display: flex; align-items: center; justify-content: center;">
+                                <div style="background: url('images/coban.webp') center/contain no-repeat; width: 80%; height: 80%;"></div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>E-commerce Moderno</h3>
+                                <p>Tienda online completa con sistema de pagos, gestión de inventario y diseño responsive.</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Web Design</span>
+                                    <span class="tag">E-commerce</span>
+                                </div>
+                                <a href="https://grupocoban.com.gt/" target="_blank" class="portfolio-link">Ver Proyecto →</a>
+                            </div>
+                        </div>
+                        <div class="portfolio-item">
+                            <div class="portfolio-image" style="background: #2a2a2a; display: flex; align-items: center; justify-content: center;">
+                                <div style="background: url('images/zoo.png') center/contain no-repeat; width: 80%; height: 80%;"></div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>Portal Web Educativo</h3>
+                                <p>Sitio web completo para zoológico con sistema de tickets, información educativa, horarios y experiencias.</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Web Design</span>
+                                    <span class="tag">Educativo</span>
+                                </div>
+                                <a href="https://www.aurorazoo.org.gt/" target="_blank" class="portfolio-link">Ver Proyecto →</a>
+                            </div>
+                        </div>
+                        <div class="portfolio-item">
+                            <div class="portfolio-image" style="background: #2a2a2a; display: flex; align-items: center; justify-content: center;">
+                                <div style="background: url('images/pollocampero.png') center/contain no-repeat; width: 80%; height: 80%;"></div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>Restaurante Online</h3>
+                                <p>Sitio web completo para restaurante con sistema de pedidos, menú digital, ubicaciones y carrito de compras.</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Web Design</span>
+                                    <span class="tag">Restaurante</span>
+                                </div>
+                                <a href="https://www.campero.com/gt/inicio" target="_blank" class="portfolio-link">Ver Proyecto →</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-footer">
+                        <button class="btn-volver" onclick="closePortfolio()">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Section -->
+        <div class="blog-overlay" id="blogOverlay">
+            <div class="blog-modal">
+                <button class="close-blog" onclick="closeBlog()">×</button>
+                <div class="blog-content">
+                    <div class="blog-header">
+                        <span class="section-tag">Blog</span>
+                        <h2>Artículos y Noticias</h2>
+                        <p>Mantente al día con las últimas tendencias en desarrollo web, diseño y tecnología digital.</p>
+                    </div>
+                    <div class="blog-grid">
+                        <article class="blog-item">
+                            <div class="blog-image">
+                                <div class="blog-placeholder">Tendencia 2024</div>
+                            </div>
+                            <div class="blog-info">
+                                <h3>Las 5 Tendencias de Diseño Web para 2024</h3>
+                                <p>Descubre las tendencias más importantes que están marcando el diseño web este año, desde microinteracciones hasta diseño sostenible.</p>
+                                <div class="blog-meta">
+                                    <span class="blog-date">15 Septiembre, 2025</span>
+                                    <span class="blog-category">Diseño</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="blog-item">
+                            <div class="blog-image">
+                                <div class="blog-placeholder">SEO Tips</div>
+                            </div>
+                            <div class="blog-info">
+                                <h3>Guía Completa de SEO para Principiantes</h3>
+                                <p>Aprende los fundamentos del SEO y cómo optimizar tu sitio web para aparecer en los primeros resultados de Google.</p>
+                                <div class="blog-meta">
+                                    <span class="blog-date">10 Septiembre, 2025</span>
+                                    <span class="blog-category">SEO</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="blog-item">
+                            <div class="blog-image">
+                                <div class="blog-placeholder">Mobile First</div>
+                            </div>
+                            <div class="blog-info">
+                                <h3>Diseño Mobile First: ¿Por qué es Importante?</h3>
+                                <p>Entiende por qué el diseño mobile first es crucial para el éxito de tu sitio web en la era digital actual.</p>
+                                <div class="blog-meta">
+                                    <span class="blog-date">5 Septiembre, 2025</span>
+                                    <span class="blog-category">Desarrollo</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="blog-footer">
+                        <button class="btn-volver" onclick="closeBlog()">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.remove('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Close mobile menu on window resize if screen becomes larger
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                closeMobileMenu();
+            }
+        });
+
+        // Portfolio functions
+        function openPortfolio() {
+            const portfolioOverlay = document.getElementById('portfolioOverlay');
+            portfolioOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closePortfolio() {
+            const portfolioOverlay = document.getElementById('portfolioOverlay');
+            portfolioOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close portfolio when clicking outside the modal
+        document.getElementById('portfolioOverlay').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closePortfolio();
+            }
+        });
+
+        // Close portfolio with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closePortfolio();
+            }
+        });
+
+        // Close portfolio when clicking on the portfolio header (for mobile close button)
+        document.addEventListener('click', function(event) {
+            if (event.target.closest('.portfolio-header')) {
+                const rect = event.target.closest('.portfolio-header').getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+                
+                // Check if click is in the top-right area where the close button appears
+                if (x > rect.width - 50 && y < 50) {
+                    closePortfolio();
+                }
+            }
+        });
+
+        // Blog Functions
+        function showBlog() {
+            const blogOverlay = document.getElementById('blogOverlay');
+            blogOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeBlog() {
+            const blogOverlay = document.getElementById('blogOverlay');
+            blogOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close blog when clicking outside the modal
+        document.getElementById('blogOverlay').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeBlog();
+            }
+        });
+
+        // Close blog with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeBlog();
+            }
+        });
+    </script>
+</body>
+</html>
